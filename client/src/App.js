@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { supabase } from './supabase';
 
 function App() {
+  const [routes, setRoutes] = useState([]);
+
   useEffect(() => {
     // Check environment variables
     console.log('Environment variables check:');
@@ -24,6 +26,16 @@ function App() {
       }
     };
     testSupabase();
+
+    const fetchRoutes = async () => {
+      const { data, error } = await supabase.from('"Routes"').select('*');
+      if (error) {
+        console.error('Supabase error:', error);
+      } else {
+        setRoutes(data); // <-- sla de data op in state
+      }
+    };
+    fetchRoutes();
   }, []);
 
   return (
@@ -41,6 +53,13 @@ function App() {
         >
           Biatches
         </a>
+        <ul>
+          {routes.map(route => (
+            <li key={route.id}>
+              {route["Route ID"] || route.id}
+            </li>
+          ))}
+        </ul>
       </header>
     </div>
   );
