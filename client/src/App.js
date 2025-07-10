@@ -8,6 +8,8 @@ function App() {
   useEffect(() => {
     const fetchRoutes = async () => {
       const { data, error } = await supabase.from('routes').select('*');
+      console.log('Supabase data:', data);
+      console.log('Supabase error:', error);
       if (error) {
         console.error('Supabase error:', error);
       } else {
