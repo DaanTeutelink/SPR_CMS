@@ -1,31 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect } from 'react';
-import { supabase } from './supabase';
+// import { supabase } from './supabase';
 
 function App() {
   useEffect(() => {
-    const testSupabaseConnection = async () => {
-      try {
-        console.log('Testing Supabase connection...');
-        console.log('Supabase URL:', process.env.REACT_APP_SUPABASE_URL ? 'Set' : 'Not set');
-        console.log('Supabase Key:', process.env.REACT_APP_SUPABASE_KEY ? 'Set' : 'Not set');
-        
-        // Test a simple query
-        const { data, error } = await supabase.from('routes').select('*').limit(1);
-        
-        if (error) {
-          console.error('Supabase query error:', error);
-        } else {
-          console.log('Supabase connection successful!');
-          console.log('Data:', data);
-        }
-      } catch (err) {
-        console.error('Supabase connection failed:', err);
-      }
-    };
-
-    testSupabaseConnection();
+    // Simple test to check if environment variables are loaded
+    console.log('Environment variables check:');
+    console.log('REACT_APP_SUPABASE_URL:', process.env.REACT_APP_SUPABASE_URL ? 'Set' : 'Not set');
+    console.log('REACT_APP_SUPABASE_KEY:', process.env.REACT_APP_SUPABASE_KEY ? 'Set' : 'Not set');
   }, []);
 
   return (
