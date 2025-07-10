@@ -1,7 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
+import { supabase } from './supabase';
 
 function App() {
+  useEffect(() => {
+    const fetchRoutes = async () => {
+      const { data, error } = await supabase.from('routes').select();
+      console.log('Data:', data);
+      console.log('Error:', error);
+    };
+
+    fetchRoutes();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -21,17 +33,5 @@ function App() {
     </div>
   );
 }
-
-import { supabase } from './supabase';
-
-useEffect(() => {
-  const fetchRoutes = async () => {
-    const { data, error } = await supabase.from('routes').select();
-    console.log('Data:', data);
-    console.log('Error:', error);
-  };
-
-  fetchRoutes();
-}, []);
 
 export default App;
