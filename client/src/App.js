@@ -22,4 +22,16 @@ function App() {
   );
 }
 
+import { supabase } from './supabase';
+
+useEffect(() => {
+  const fetchRoutes = async () => {
+    const { data, error } = await supabase.from('routes').select();
+    console.log('Data:', data);
+    console.log('Error:', error);
+  };
+
+  fetchRoutes();
+}, []);
+
 export default App;
