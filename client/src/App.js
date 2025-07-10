@@ -1,18 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect } from 'react';
-import { supabase } from './supabase';
+// import { supabase } from './supabase';
 
 function App() {
-  useEffect(() => {
-    const fetchRoutes = async () => {
-      const { data, error } = await supabase.from('routes').select();
-      console.log('Data:', data);
-      console.log('Error:', error);
-    };
+  // Temporarily commented out until Supabase is configured
+  // useEffect(() => {
+  //   const fetchRoutes = async () => {
+  //     try {
+  //       const { data, error } = await supabase.from('routes').select();
+  //       console.log('Data:', data);
+  //       console.log('Error:', error);
+  //     } catch (err) {
+  //       console.error('Supabase error:', err);
+  //     }
+  //   };
 
-    fetchRoutes();
-  }, []);
+  //   fetchRoutes();
+  // }, []);
 
   return (
     <div className="App">
