@@ -9,7 +9,7 @@ function App() {
     const fetchRoutes = async () => {
       const { data, error } = await supabase.from('routes').select('*');
       if (error) {
-        console.error('Supabase error: kut', error);
+        console.error('Supabase error:', error);
       } else {
         setRoutes(data);
       }
