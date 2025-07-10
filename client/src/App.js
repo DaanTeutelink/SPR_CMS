@@ -7,8 +7,8 @@ function App() {
   useEffect(() => {
     // Check environment variables
     console.log('Environment variables check:');
-    console.log('REACT_APP_SUPABASE_URL:', process.env.REACT_APP_SUPABASE_URL ? 'Set' : 'Not set');
-    console.log('REACT_APP_SUPABASE_KEY:', process.env.REACT_APP_SUPABASE_KEY ? 'Set' : 'Not set');
+    console.log('SUPABASE_URL:', process.env.REACT_APP_SUPABASE_URL);
+    console.log('SUPABASE_KEY:', process.env.REACT_APP_SUPABASE_KEY);
 
     // Test Supabase connection
     const testSupabase = async () => {
